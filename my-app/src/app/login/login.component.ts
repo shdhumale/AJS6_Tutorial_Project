@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth.guard';
 import { element } from 'protractor';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   string : Password; */
   show: boolean = false;
  
-  constructor(private myService : AuthService) { }
+  constructor(private myService : AuthService, private myAuth: AuthGuard) { }
 
   ngOnInit() {
   }
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
         } */
          if (myServiceData[0].username == form.controls['UserName'].value  && myServiceData[0].password == form.controls['Password'].value) {
           this.show = true;
+          this.myAuth.setFlagValue(true);
         } else {
           this.show = false;
         }

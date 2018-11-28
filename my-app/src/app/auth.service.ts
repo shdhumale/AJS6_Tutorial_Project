@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
@@ -6,7 +7,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class AuthService {
 
-  constructor(private myhttpClient : HttpClient) { }
+  
+
+  constructor(private myhttpClient : HttpClient, private myAuth : AuthGuard) { }
 
    /*getUserData(UserName, Password) {
     if (UserName == "test" && Password == "ptest") {
@@ -25,4 +28,6 @@ export class AuthService {
     } */
     return this.myhttpClient.get('http://localhost:2303/login');
   } 
+
+ 
 }

@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { RouterModule, CanActivate } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { HttpClientModule} from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HttpClientModule} from '@angular/common/http';
           },
           {
             path:'admin',
-            component:AdminComponent
+            component:AdminComponent,
+            canActivate: [AuthGuard]
           },
           {
             path:'',
@@ -43,7 +45,7 @@ import { HttpClientModule} from '@angular/common/http';
       )
       
    ],
-   providers: [ AuthService ],
+   providers: [ AuthService, AuthGuard],
    bootstrap: [
       AppComponent
    ]
