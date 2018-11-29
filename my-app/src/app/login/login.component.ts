@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 /*   string : UserName;
   string : Password; */
-  show: boolean = false;
+  //show: boolean = false;
  
   constructor(private myService : AuthService, private myAuth: AuthGuard, private myrouter: Router) { }
 
@@ -63,10 +63,12 @@ export class LoginComponent implements OnInit {
            element = JSON.parse(myServiceData[index]);
         } */
          if (myServiceData[0].username == form.controls['UserName'].value  && myServiceData[0].password == form.controls['Password'].value) {
-          this.show = true;
+         // this.show = true;
           this.myAuth.setFlagValue(true);
+          this.myrouter.navigate(['admin']);       
         } else {
-          this.show = false;
+          //this.show = false;
+          alert("Wrong Crendential");
           this.myrouter.navigate(['']);       
         }
       },

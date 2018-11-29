@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   //public flag: boolean;
   private flag = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
-  constructor(private myrouter: Router, private myAuthService : AuthService) {
+  constructor(private myrouter: Router) {
 
   }
 
@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
           console.log("Data ----------------"+data);
         }
       ); */
-      this.myrouter.navigate(['']);
+      this.myrouter.navigate(['login']);
     }
     else {
       console.log("this executed/////////////////////////////////////////");

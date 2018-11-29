@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private myAuth : AuthGuard, private myRouter : Router) { }
+  constructor(private myRouter : Router, private myAuth: AuthGuard) { }
 
   ngOnInit() {
     //this.myAuth.setFlagValue(false);
+    this.myAuth.setFlagValue(false);
     localStorage.clear();
     this.myRouter.navigate(['']);
     console.log("localStorage",localStorage);
