@@ -1,3 +1,4 @@
+
 import { RouterModule, CanActivate } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { HttpClientModule} from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { AuthGuard } from './auth.guard';
       AppComponent,
       HomeComponent,
       LoginComponent,
-      AdminComponent
+      AdminComponent,
+      LogoutComponent
    ],
    imports: [
       BrowserModule,
@@ -37,13 +40,16 @@ import { AuthGuard } from './auth.guard';
             canActivate: [AuthGuard]
           },
           {
+            path:'logout',
+            component: LogoutComponent
+          },
+          {
             path:'',
             component:HomeComponent
           }
 
         ]
-      )
-      
+      )      
    ],
    providers: [ AuthService, AuthGuard],
    bootstrap: [
