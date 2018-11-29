@@ -6,9 +6,9 @@
 
   <input type="text" name="UserName" id="UserName" placeholder="UserName" [(ngModel)]="UserName"/>
   <input type="text" name="Password" id="Password" placeholder="Password" [(ngModel)]="Password"/>
-  <input type="submit" value="Form Submit">
+  <input type="submit" value="Form Submit" class="button">
   <!-- <button (click)="getUserData(UserName,Password)">Submit</button> -->
   </form>
   <p *ngIf="show">
-      <a [routerLink]="[ '/admin' ]" >Go To admin Page</a>
+      <a [routerLink]="[ '/admin' ]" class="button">Go To admin Page</a>
     </p>
