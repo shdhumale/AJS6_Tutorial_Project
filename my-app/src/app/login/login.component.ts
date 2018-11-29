@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForOf } from '@angular/common';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   string : Password; */
   show: boolean = false;
  
-  constructor(private myService : AuthService, private myAuth: AuthGuard) { }
+  constructor(private myService : AuthService, private myAuth: AuthGuard, private myrouter: Router) { }
 
   ngOnInit() {
   }
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
           this.myAuth.setFlagValue(true);
         } else {
           this.show = false;
+          this.myrouter.navigate(['']);       
         }
       },
       err => console.log(err), // error

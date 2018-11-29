@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,21 +8,28 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
-  public flag : boolean;
+  //public flag: boolean;
+  private flag = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
-  constructor()
-  {
+  constructor(private myrouter: Router) {
 
   }
 
-  setFlagValue(value : boolean)
-  {
+  setFlagValue(value: boolean) {
     this.flag = value;
+    localStorage.setItem('loggedIn', 'true');
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     //return true;
-    return this.flag;
+    if (!this.flag) {
+      this.myrouter.navigate(['']);
+    }
+    else {
+      console.log("this executed/////////////////////////////////////////");
+      return this.flag;
+    }
+
   }
 }
