@@ -9,7 +9,7 @@ export class AuthService {
 
   
 
-  constructor(private myhttpClient : HttpClient, private myAuth : AuthGuard) { }
+  constructor(private myhttpClient : HttpClient) { }
 
    /*getUserData(UserName, Password) {
     if (UserName == "test" && Password == "ptest") {
